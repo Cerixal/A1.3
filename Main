@@ -1,0 +1,55 @@
+import statistics
+
+data = [90, 30, 13, 67, 85, 87, 50, 45, 51, 72, 64, 69, 59, 17, 22, 23, 44, 25, 16, 67, 85, 87, 50, 45, 51, 72, 59, 14,
+        50, 55, 32, 23, 24, 25, 37, 28, 39, 30, 33, 35, 40, 34, 41, 43, 94, 95, 98, 99, 44, 45, 47, 48, 49, 53, 61, 63,
+        69, 75, 77, 60, 83]
+
+dataList = list(map(int, data))
+
+min1 = min(dataList)
+max1 = max(dataList)
+mean = statistics.mean(dataList)
+mean = round(mean, 2)
+write = "the minimum is {}, the maximum is {} and the average/ mean is {}".format(min1, max1, mean)
+print(write)
+# print(dataList)
+
+count10 = 0
+count20 = 0
+count30 = 0
+count40 = 0
+count50 = 0
+count60 = 0
+count70 = 0
+i = 0
+j = 0
+
+for j in dataList:
+    if 60 <= j < 70:
+        count70 += 1
+    elif 50 <= j < 60:
+        count60 += 1
+    elif 40 <= j < 50:
+        count50 += 1
+    elif 30 <= j < 40:
+        count40 += 1
+    elif 20 <= j < 30:
+        count30 += 1
+    elif 10 <= j < 20:
+        count20 += 1
+    elif 0 >= j <= 10:
+        count10 += 1
+
+print("*"*count10+"\n"+"*"*count20+"\n"+"*"*count30+"\n"+"*"*count40+"\n"+"*"*count50+"\n"+"*"*count60+"\n"+"*"*count70)
+
+for i in range(len(dataList)):
+    for j in range(len(dataList) - 1):
+        if dataList[j] < dataList[j + 1]:
+            dataList[j], dataList[j + 1] = dataList[j + 1], dataList[j]
+
+p = len(dataList) * 0.6
+p = int(round(p, 0))
+for x in range(p):
+    minPass = dataList[x]
+minPass = round(minPass, -1)
+print("the minimum pass mark rounded to 10 would be", minPass)
